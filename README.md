@@ -1,4 +1,4 @@
-# Autometic Detection of Diabetic Retinopathy with Deep Learning
+# Automatic Detection of Diabetic Retinopathy with Deep Learning
 
 ## Tasks:
 
