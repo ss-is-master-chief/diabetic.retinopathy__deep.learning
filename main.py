@@ -7,6 +7,9 @@ from colorama import Fore, Style
 
 import pandas as pd
 import numpy as np
+import matplotlib
+matplotlib.use('TkAgg')
+import matplotlib.pyplot as plt
 
 from scripts.fetch_data import fetch_db0
 from scripts.preprocess_2 import preprocess_image
