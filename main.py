@@ -34,14 +34,14 @@ if __name__ == "__main__":
         shutil.rmtree('normalised_images')
         os.makedirs('normalised_images')
 
-    print("{}[~] Preprocessing Images into directory: normalised_images ..{}".format(Fore.YELLOW, Style.RESET_ALL))
+    print("{}[~] Preprocessing Images into directory: normalised_images ..{}\n".format(Fore.YELLOW, Style.RESET_ALL))
     #print(os.listdir(dir_path))
     for file_name in tqdm(os.listdir(dir_path)):
         #print(file_name)
         if "png" in file_name:
-            path = "{}\{}".format(dir_path, file_name)
+            path = "{}/{}".format(dir_path, file_name)
             #print(path)
-            output = "{}\{}".format(output_path, file_name)
+            output = "{}/{}".format(output_path, file_name)
             new_img = preprocess_image(path)
             cv2.imwrite(output, new_img)
             temp=cv2.imread(output)
@@ -49,7 +49,7 @@ if __name__ == "__main__":
             #print(g.shape)
             imagenorms.append(np.reshape(g,(1,512*512)))
 
-    print("\n{}[\u2713] Pre-processing complete..{}".format(Fore.GREEN, Style.RESET_ALL))
+    print("\n{}[\u2713] Pre-processing complete..{}\n".format(Fore.GREEN, Style.RESET_ALL))
 
     labels = create_label(dot_path)
     norm_images = pd.DataFrame(np.squeeze(np.asarray(imagenorms)))

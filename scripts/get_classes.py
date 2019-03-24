@@ -17,7 +17,7 @@ def getclass(i):
 def create_label(path):
 	# use your path for .dot files
 	#path = r'C:\Users\Ishan\Desktop\diaretdb0_v_1_1\resources\images\diaretdb0_groundtruths'
-	all_files = glob.glob(path + "\*.dot")
+	all_files = glob.glob(path + "/*.dot")
 
 	li = []
 	names=[]
