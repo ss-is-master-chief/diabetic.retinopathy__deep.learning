@@ -51,14 +51,14 @@ def preprocess_image(path):
     # assume there is no notch present and do no inversion.
     if detect_notch(img, img_thresh):
         cv.flip(img, -1, img)
-        print("Notch detected in image {}.".format(path.split('/')[-1]))
+        #print("Notch detected in image {}.".format(path.split('/')[-1]))
     else:
         vert_flip = cv.flip(img, 0)
         vert_flip_thresh = cv.flip(img_thresh, 0)
 
         if detect_notch(vert_flip, vert_flip_thresh):
             cv.flip(img, -1, img)
-            print("Notch detected in image {}.".format(path.split('/')[-1]))
+            #print("Notch detected in image {}.".format(path.split('/')[-1]))
 
     # Examine the file name and flip the eye horizontally if it's a left eye.
     if "left" in path:

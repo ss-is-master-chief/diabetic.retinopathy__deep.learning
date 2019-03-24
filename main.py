@@ -8,14 +8,18 @@ from colorama import Fore, Style
 import pandas as pd
 import numpy as np
 
-from scripts.fetch_data import fetch_db0
+#from scripts.fetch_data import fetch_db0
 from scripts.preprocess_2 import preprocess_image
 from scripts.build_model import build_model
+from scripts.get_classes import create_label
 
 if __name__ == "__main__":
     #fetch_db0()
 
     dir_path = "./diaretdb0_v_1_1/resources/images/diaretdb0_fundus_images"
+    #dir_path=r"C:\Users\Ishan\Desktop\diaretdb0_v_1_1\resources\images\diaretdb0_fundus_images"
+    dot_path= "./diaretdb0_v_1_1/resources/images/diaretdb0_groundtruths"
+    #dot_path=r"C:\Users\Ishan\Desktop\diaretdb0_v_1_1\resources\images\diaretdb0_groundtruths"
     output_path = "./normalised_images"
     norm_images = pd.DataFrame()
     imagenorms = []
@@ -27,17 +31,23 @@ if __name__ == "__main__":
         os.makedirs('normalised_images')
 
     print("{}[~] Preprocessing Images into directory: normalised_images ..{}".format(Fore.YELLOW, Style.RESET_ALL))
-    
+    #print(os.listdir(dir_path))
     for file_name in tqdm(os.listdir(dir_path)):
+        #print(file_name)
         if "png" in file_name:
-            path = "{}/{}".format(dir_path, file_name)
-            output = "{}/{}".format(output_path, file_name)
+            path = "{}\{}".format(dir_path, file_name)
+            #print(path)
+            output = "{}\{}".format(output_path, file_name)
             new_img = preprocess_image(path)
             cv2.imwrite(output, new_img)
+            temp=cv2.imread(output)
+            b,g,r=cv2.split(temp)
+            #print(g.shape)
+            imagenorms.append(np.reshape(g,(1,512*512)))
 
     print("\n{}[\u2713] Pre-processing complete..{}".format(Fore.GREEN, Style.RESET_ALL))
 
-    labels = pd.read_csv("labels.csv")
+    labels = create_label(dot_path)
     norm_images = pd.DataFrame(np.squeeze(np.asarray(imagenorms)))
     norm_images['class'] = labels['class']
 
