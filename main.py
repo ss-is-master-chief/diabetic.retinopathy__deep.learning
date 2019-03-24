@@ -8,13 +8,14 @@ from colorama import Fore, Style
 import pandas as pd
 import numpy as np
 
-#from scripts.fetch_data import fetch_db0
+from scripts.fetch_data import fetch_db0
 from scripts.preprocess_2 import preprocess_image
 from scripts.build_model import build_model
 from scripts.get_classes import create_label
 
 if __name__ == "__main__":
-    #fetch_db0()
+    
+    fetch_db0()
 
     dir_path = "./diaretdb0_v_1_1/resources/images/diaretdb0_fundus_images"
     #dir_path=r"C:\Users\Ishan\Desktop\diaretdb0_v_1_1\resources\images\diaretdb0_fundus_images"
