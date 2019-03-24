@@ -27,6 +27,7 @@ if __name__ == "__main__":
         os.makedirs('normalised_images')
 
     print("{}[~] Preprocessing Images into directory: normalised_images ..{}".format(Fore.YELLOW, Style.RESET_ALL))
+    
     for file_name in tqdm(os.listdir(dir_path)):
         if "png" in file_name:
             path = "{}/{}".format(dir_path, file_name)
