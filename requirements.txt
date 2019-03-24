@@ -1,4 +1,5 @@
 tqdm>=4.19.4
+tensorflow
 keras>=2.2.4
 matplotlib>=2.0.2
 numpy>=1.16.2
