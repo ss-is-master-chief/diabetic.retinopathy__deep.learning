@@ -70,8 +70,8 @@ if __name__ == "__main__":
     print(model.summary())
 
     model.fit(x_train, y_train, 
-                    epochs=100, 
-                    batch_size=16, 
+                    epochs=200, 
+                    batch_size=32, 
                     shuffle=True, 
                     validation_split=0.2,
                     callbacks=[tensorboard],

@@ -1,6 +1,14 @@
 import cv2
 import numpy as np
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
+
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--img', type=str, required=False, default="image001.png", help='/path/to/images/')
+FLAGS = parser.parse_args()
 
 def extract_bv(image):		
 	b,green_fundus,r = cv2.split(image)
@@ -90,18 +98,19 @@ def exudate(img):
 
 
 if __name__ == '__main__':
-	img=cv2.imread(r"C:\Users\Ishan\Desktop\diaretdb0_v_1_1\resources\images\diaretdb0_fundus_images\image007.png")
+	norm_dir_path = "./normalised_images/"
+	img=cv2.imread(norm_dir_path+FLAGS.img)
 	bv=extract_bv(img)
 	ex=exudate(img)
-	plt.figure(figsize=(20,20))
+	plt.figure(figsize=(25,25))
 	plt.subplot(232)
 	plt.imshow(img)
-	plt.title("Original")
+	plt.title("Original - {}".format(FLAGS.img))
 	plt.subplot(234)
 	plt.imshow(bv)
-	plt.title("Blood Vessels")
+	plt.title("Blood Vessels - {}".format(FLAGS.img))
 	plt.subplot(236)
 	plt.imshow(ex)
-	plt.title("Exudations")
+	plt.title("Exudations - {}".format(FLAGS.img))
 	plt.show()
 	
