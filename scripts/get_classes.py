@@ -21,10 +21,11 @@ def create_label(path):
 
 	li = []
 	names=[]
-	for filename in all_files:
-	    df = pd.read_csv(filename, index_col=None, header=None,sep=' ')
-	    li.append(df)
-	    names.append(filename)
+
+	for filename in sorted(all_files):
+		df = pd.read_csv(filename, index_col=None, header=None,sep=' ')
+		li.append(df)
+		names.append(filename)
 
 	frame = pd.concat(li, axis=0,sort=False, ignore_index=True)
 	frame.columns=['redsmalldots','haemorrhages','hardexudates','softexudates','neovascularisation']
