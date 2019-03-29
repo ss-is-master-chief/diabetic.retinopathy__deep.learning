@@ -1,5 +1,7 @@
 # Automatic Detection of Diabetic Retinopathy with Deep Learning
 
+Detection of fundus in eyeball images for early detection of Diabetic Retinopathy using Deep Learning and classifying them into Not Present, Mild, Moderate, or Acute.
+
 ## Running the script
 
 Make sure you have the following libraries installed:
@@ -16,17 +18,23 @@ Make sure you have the following libraries installed:
 
 by running the following command:
 
-`pip install -r requirements.txt`
+```
+pip install -r requirements.txt
+```
 
 Next, run the main script using the command:
 
-`python main.py`
+```
+python main.py
+```
 
 The main script downloads [DIARETDB0](http://www.it.lut.fi/project/imageret/diaretdb0/) from the website if not already available in your current directory, and unzips it. A series of functions are called to normalise the images, annotate them for classes using a scoring function, create a dataframe, and finally pass it to our Convolutional Neural Network for training.
 
 Training history can be visualised on Tensorboard using the following command:
 
-`tensorboard --logdir = ./logs`
+```
+tensorboard --logdir = ./logs
+```
 
 Running the script for 200 epochs gave us a baseline accuracy of 80%. Currently, we are working on improving our model to increase accuracy scores on the test dataset.
 
@@ -64,7 +72,9 @@ Example:
 
 To visualise the dataset images, run:
 
-`python scripts/feature_extraction.py --img <IMAGE>`
+```
+python scripts/feature_extraction.py --img <IMAGE>
+```
 
 where `<IMAGE>` can have values as `image001.png`, `image002.png` till `image130.png`. Running the script should give you the results such as the following:
 
