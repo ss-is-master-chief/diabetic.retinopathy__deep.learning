@@ -73,6 +73,7 @@ def exudate(img):
 
   clahe = cv2.createCLAHE()
   clImg = clahe.apply(curImg)
+#   clImg = clahe.apply(clImg)
   curImg = clImg
 
   # create a CLAHE object (Arguments are optional).
@@ -87,7 +88,7 @@ def exudate(img):
   curImg = dilateImg
 
           #Thresholding with Complement/15
-  retValue, threshImg = cv2.threshold(curImg, 245, 247, cv2.THRESH_BINARY_INV)
+  retValue, threshImg = cv2.threshold(curImg, 235, 247, cv2.THRESH_BINARY_INV)
   curImg = threshImg
 
   #Median Filtering
